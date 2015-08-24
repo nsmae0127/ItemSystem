@@ -4,13 +4,15 @@ using UnityEngine;
 
 namespace BurgZergArcade.ItemSystem.Editor
 {
-    public class ISQualityDatabaseEditor : EditorWindow
+    public partial class ISQualityDatabaseEditor : EditorWindow
     {
         ISQualityDatabase qualityDatabase;
-        ISQuality selectedItem;
+        //ISQuality selectedItem;
         Texture2D selectedTexture;
+        int selectedIndex = -1;
+        Vector2 _scrollPos;             // scroll position for the ListView
 
-        const int SPRITE_BUTTON_SIZE = 92;
+        const int SPRITE_BUTTON_SIZE = 46;
 
         const string DATABASE_FILE_NAME = @"bzaQualityDatabase.asset";
         const string DATABASE_FOLDER_NAME = @"Database";
@@ -40,12 +42,28 @@ namespace BurgZergArcade.ItemSystem.Editor
                 AssetDatabase.Refresh();
             }
 
-            selectedItem = new ISQuality();
+            //selectedItem = new ISQuality();
         }
 
         void OnGUI()
         {
-            AddQualityToDatabase();
+            ListView();
+            //AddQualityToDatabase();
+
+            GUILayout.BeginHorizontal("Box", GUILayout.ExpandWidth(true));
+            BottomBar();
+            GUILayout.EndHorizontal();
+        }
+
+        void BottomBar()
+        {
+            // count
+            GUILayout.Label("Qualities: " + qualityDatabase.Count);
+            // add button
+            if (GUILayout.Button("Add"))
+            {
+                qualityDatabase.Add(new ISQuality());
+            }
         }
 
         void AddQualityToDatabase()
@@ -75,7 +93,10 @@ namespace BurgZergArcade.ItemSystem.Editor
                 if (selectedItem == null)
                     return;
 
-                qualityDatabase.database.Add(selectedItem);
+                if (selectedItem.Name == "")
+                    return;
+
+                qualityDatabase.Add(selectedItem);
 
                 selectedItem = new ISQuality();
             }

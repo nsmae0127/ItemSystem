@@ -17,7 +17,7 @@ namespace BurgZergArcade.ItemSystem
         [SerializeField]
         ISQuality _quality;
 
-        public string ISName
+        public string Name
         {
             get
             {
@@ -30,7 +30,7 @@ namespace BurgZergArcade.ItemSystem
             }
         }
 
-        public int ISValue
+        public int Value
         {
             get
             {
@@ -43,7 +43,7 @@ namespace BurgZergArcade.ItemSystem
             }
         }
 
-        public Sprite ISIcon
+        public Sprite Icon
         {
             get
             {
@@ -56,7 +56,7 @@ namespace BurgZergArcade.ItemSystem
             }
         }
 
-        public int ISBurden
+        public int Burden
         {
             get
             {
@@ -69,7 +69,7 @@ namespace BurgZergArcade.ItemSystem
             }
         }
 
-        public ISQuality ISQuality
+        public ISQuality Quality
         {
             get
             {

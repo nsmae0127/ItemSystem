@@ -3,9 +3,11 @@ using System.Collections;
 
 namespace BurgZergArcade.ItemSystem
 {
-    public interface ISEquipable
-    {
-        // equipSlot
-        bool Equip();
-    }
+	public interface IISEquipable
+	{
+		ISEquipmentSlot EquipmentSlot { get; }
+
+		// equipSlot
+		bool Equip ();
+	}
 }

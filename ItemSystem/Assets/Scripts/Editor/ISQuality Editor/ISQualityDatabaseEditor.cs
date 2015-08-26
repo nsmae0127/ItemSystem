@@ -9,13 +9,14 @@ namespace BurgZergArcade.ItemSystem.Editor
 		ISQualityDatabase qualityDatabase;
 		Texture2D selectedTexture;
 		int selectedIndex = -1;
-		Vector2 _scrollPos;                     // scroll position for the ListView
+		Vector2 _scrollPos;
+		// scroll position for the ListView
 
 		const int SPRITE_BUTTON_SIZE = 46;
 
 		const string DATABASE_NAME = @"bzaQualityDatabase.asset";
 		const string DATABASE_PATH = @"Database";
-		const string DATABASE_PULL_PATH = @"Assets/" + DATABASE_PATH + "/" + DATABASE_NAME;
+		//		const string DATABASE_PULL_PATH = @"Assets/" + DATABASE_PATH + "/" + DATABASE_NAME;
 
 		[MenuItem ("BZA/Database/Quality Editor %#w")]
 		public static void Init ()
@@ -28,17 +29,16 @@ namespace BurgZergArcade.ItemSystem.Editor
 
 		void OnEnable ()
 		{
-            if (qualityDatabase == null)
-            qualityDatabase = ISQualityDatabase.GetDatabase<ISQualityDatabase>(DATABASE_PATH, DATABASE_NAME);
+			if (qualityDatabase == null)
+				qualityDatabase = ISQualityDatabase.GetDatabase<ISQualityDatabase> (DATABASE_PATH, DATABASE_NAME);
 		}
 
 		void OnGUI ()
 		{
-            if (qualityDatabase == null)
-            {
-                Debug.LogWarning("qualityDatabase not loaded");
-                return;
-            }
+			if (qualityDatabase == null) {
+				Debug.LogWarning ("qualityDatabase not loaded");
+				return;
+			}
 			ListView ();
 
 			GUILayout.BeginHorizontal ("Box", GUILayout.ExpandWidth (true));
@@ -56,5 +56,5 @@ namespace BurgZergArcade.ItemSystem.Editor
 				qualityDatabase.Add (new ISQuality ());
 			}
 		}
-    }
+	}
 }

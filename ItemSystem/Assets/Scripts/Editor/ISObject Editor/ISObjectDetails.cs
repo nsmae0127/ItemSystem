@@ -3,58 +3,61 @@ using System.Collections;
 
 namespace BurgZergArcade.ItemSystem.Editor
 {
-    public partial class ISObjectEditor
-    {
-        ISWeapon tempWeapon = new ISWeapon();
+	public partial class ISObjectEditor
+	{
+		ISWeapon tempWeapon = new ISWeapon ();
 
-        bool showNewWeaponDetails = false;
+		bool showNewWeaponDetails = false;
 
-        void ItemDetails()
-        {
-            GUILayout.BeginVertical( "Box", GUILayout.ExpandWidth( true ), GUILayout.ExpandHeight( true ) );
-            GUILayout.BeginHorizontal( GUILayout.ExpandWidth( true ), GUILayout.ExpandHeight( true ) );
+		void ItemDetails ()
+		{
+			GUILayout.BeginVertical ("Box", GUILayout.ExpandWidth (true), GUILayout.ExpandHeight (true));
+			GUILayout.BeginVertical (GUILayout.ExpandWidth (true), GUILayout.ExpandHeight (true));
 
-            if ( showNewWeaponDetails )
-                DisplayNewWeapon();
+			if (showNewWeaponDetails)
+				DisplayNewWeapon ();
 
-            GUILayout.EndHorizontal();
+			GUILayout.EndVertical ();
 
-            GUILayout.Space( 50 );
-            GUILayout.BeginHorizontal( "Box", GUILayout.ExpandWidth( true ) );
-            DisplayButtons();
-            GUILayout.EndHorizontal();
-            GUILayout.EndVertical();
-        }
+			GUILayout.Space (50);
+			GUILayout.BeginHorizontal ("Box", GUILayout.ExpandWidth (true));
+			DisplayButtons ();
+			GUILayout.EndHorizontal ();
+			GUILayout.EndVertical ();
+		}
 
-        void DisplayNewWeapon()
-        {
-            tempWeapon.OnGUI();
-        }
+		void DisplayNewWeapon ()
+		{
+			tempWeapon.OnGUI ();
+		}
 
-        void DisplayButtons()
-        {
-            if ( !showNewWeaponDetails )
-            {
-                if ( GUILayout.Button( "Create Weapon" ) )
-                {
-                    tempWeapon = new ISWeapon();
-                    showNewWeaponDetails = true;
-                }
-            }
-            else
-            {
-                if ( GUILayout.Button( "Save" ) )
-                {
-                    showNewWeaponDetails = false;
-                    tempWeapon = null;
-                }
+		void DisplayButtons ()
+		{
+			if (!showNewWeaponDetails) {
+				if (GUILayout.Button ("Create Weapon")) {
+					tempWeapon = new ISWeapon ();
+					showNewWeaponDetails = true;
+				}
+			} else {
+				if (GUILayout.Button ("Save")) {
+					showNewWeaponDetails = false;
 
-                if ( GUILayout.Button( "Cancel" ) )
-                {
-                    showNewWeaponDetails = false;
-                    tempWeapon = null;
-                }
-            }
-        }
-    }
+//					string DATABASE_NAME = @"bzaQualityDatabase.asset";
+//					string DATABASE_PATH = @"Database";
+//					ISQualityDatabase qdb;
+//					qdb = ISQualityDatabase.GetDatabase<ISQualityDatabase> (DATABASE_PATH, DATABASE_NAME);
+//
+//					tempWeapon.Quality = qdb.Get (tempWeapon.SelectedQualityID);
+
+					database.Add (tempWeapon);
+					tempWeapon = null;
+				}
+
+				if (GUILayout.Button ("Cancel")) {
+					showNewWeaponDetails = false;
+					tempWeapon = null;
+				}
+			}
+		}
+	}
 }

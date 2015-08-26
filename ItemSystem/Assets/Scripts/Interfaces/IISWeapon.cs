@@ -3,11 +3,14 @@ using System.Collections;
 
 namespace BurgZergArcade.ItemSystem
 {
-    public interface IISGameObject
+    public interface IISWeapon
     {
-        GameObject Prefab
+        int MinDamage
         {
             get;
+            set;
         }
+
+        int Attack();
     }
 }

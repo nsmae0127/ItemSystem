@@ -38,7 +38,7 @@ namespace BurgZergArcade.ItemSystem.Editor
                 string commandName = Event.current.commandName;
                 if (commandName == "ObjectSelectorUpdated")
                 {
-                    if (selectedIndex == -1)
+                    if (selectedIndex != -1)
                     {
                         qualityDatabase.Get(selectedIndex).Icon = (Sprite) EditorGUIUtility.GetObjectPickerObject();
                     }

@@ -4,6 +4,7 @@ using System;
 
 namespace BurgZergArcade.ItemSystem
 {
+    [System.Serializable]
     public class ISObject : IISObject
     {
         [SerializeField]

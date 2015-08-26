@@ -10,6 +10,12 @@ namespace BurgZergArcade.ItemSystem
 		[SerializeField] string _name;
 		[SerializeField] Sprite _icon;
 
+        public ISEquipmentSlot()
+        {
+            _name = "Name Me";
+            _icon = new Sprite();
+        }
+
 		public string Name {
 			get {
 				return _name;
